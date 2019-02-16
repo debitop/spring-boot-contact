@@ -1,3 +1,8 @@
-INSERT INTO contact VALUES (1, 'Ivan');
-INSERT INTO contact VALUES (2, 'Mihail');
-INSERT INTO contact VALUES (3, 'Vova');
+DROP TABLE IF EXISTS contact;
+DROP SEQUENCE IF EXISTS glob_seq_contact;
+
+CREATE SEQUENCE glob_seq_contact   START 1;
+CREATE TABLE contact (
+  id   INTEGER PRIMARY KEY DEFAULT nextval('glob_seq_contact'),
+  name VARCHAR(100)
+)

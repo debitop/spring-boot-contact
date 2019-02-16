@@ -13,12 +13,22 @@ public class ContactServiceImpl implements ContactService {
     ContactRepository contactRepository;
 
     @Override
-    public void save() {
+    public void save(Contact contact) {
+        contactRepository.save(contact);
+    }
+
+    @Override
+    public void update(int id, Contact contact) {
 
     }
 
     @Override
-    public List<Contact> findContact() {
-        return null;
+    public void delete(int id) {
+        contactRepository.delete(id);
+    }
+
+    @Override
+    public List<Contact> findContact(String regExp) {
+        return contactRepository.findContact(regExp);
     }
 }

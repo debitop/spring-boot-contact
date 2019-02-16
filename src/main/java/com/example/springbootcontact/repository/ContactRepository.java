@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM contact EXCEPT (SELECT * FROM contact WHERE 1?)")
+    @Query(nativeQuery = true, value = "SELECT * FROM contact EXCEPT (SELECT * FROM contact WHERE name~ ?1)")
     List<Contact> findContact(@Param("regExp") String regExp);
 }
