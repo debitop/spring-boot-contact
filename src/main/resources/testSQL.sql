@@ -1,0 +1,1 @@
+UPDATE contact SET name='Vova3' WHERE id=3

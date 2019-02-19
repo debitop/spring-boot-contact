@@ -12,10 +12,10 @@ public class Contact {
     @NotNull
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
     @Column
-    String name;
+    private String name;
 
     public int getId() {
         return id;

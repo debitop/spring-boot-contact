@@ -19,7 +19,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void update(int id, Contact contact) {
-
+        contactRepository.update(id, contact.getName());
     }
 
     @Override

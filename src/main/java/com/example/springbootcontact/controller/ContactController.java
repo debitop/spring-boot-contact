@@ -24,7 +24,14 @@ public class ContactController {
         return contactService.findContact(regExp);
     }
 
-    public void delete(@PathVariable("id") int id){
-        contactService.delete();
+    @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/delete/{id}")
+    public void delete(@PathVariable("id") int id) {
+        contactService.delete(id);
     }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE, value = "/update/{id}")
+    public void update(@PathVariable("id") int id, @RequestBody Contact contact) {
+        contactService.update(id, contact);
+    }
+
 }
