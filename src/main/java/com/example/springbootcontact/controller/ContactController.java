@@ -34,4 +34,11 @@ public class ContactController {
         contactService.update(id, contact);
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/getone/{id}")
+    public Contact getOne(@PathVariable Integer id) {
+        Contact contact = contactService.getOne(id);
+        System.out.println(contact);
+        return contact;
+    }
+
 }

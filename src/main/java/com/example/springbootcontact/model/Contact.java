@@ -47,4 +47,12 @@ public class Contact {
 
         return Objects.hash(id, name);
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -13,8 +13,8 @@ public class ContactServiceImpl implements ContactService {
     ContactRepository contactRepository;
 
     @Override
-    public void save(Contact contact) {
-        contactRepository.save(contact);
+    public Contact save(Contact contact) {
+        return contactRepository.save(contact);
     }
 
     @Override
@@ -30,5 +30,10 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public List<Contact> findContact(String regExp) {
         return contactRepository.findContact(regExp);
+    }
+
+    @Override
+    public Contact getOne(int id) {
+        return contactRepository.getOne(id);
     }
 }
