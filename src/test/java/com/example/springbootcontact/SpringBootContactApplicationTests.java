@@ -2,6 +2,7 @@ package com.example.springbootcontact;
 
 import com.example.springbootcontact.model.Contact;
 import com.example.springbootcontact.service.ContactService;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,16 +37,16 @@ public class SpringBootContactApplicationTests {
     @Test
     public void testCorrectUpdateContact() {
         Contact persistedContact = contactService.save(mockContact());
-        System.out.println(persistedContact);
         persistedContact.setName(TEST_UPDATE_NAME);
         contactService.update(persistedContact.getId(), persistedContact);
-        System.out.println(persistedContact);
-     //   Contact
-        Assert.assertEquals("errorUpdatedName", persistedContact.getName(), TEST_UPDATE_NAME);
+        Assert.assertEquals("errorUpdatedName", contactService.getOne(persistedContact.getId()).getName(), TEST_UPDATE_NAME);
         Assert.assertEquals("errorSaveId", persistedContact.getId(), 1);
     }
 
-    ;
+    @After
+    public void cleanup() {
+        contactService.deleteAll();
+    }
 
     @Test
     public void contextLoads() {
@@ -53,6 +54,7 @@ public class SpringBootContactApplicationTests {
 
     private Contact mockContact() {
         // TODO: 23.02.2019 use Builder
+
         Contact contact = new Contact();
         contact.setName(TEST_NAME);
         return contact;

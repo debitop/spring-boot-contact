@@ -15,4 +15,6 @@ public interface ContactService {
     public List<Contact> findContact(String regExp);
 
     public Contact getOne(int id);
+
+    public void deleteAll();
 }

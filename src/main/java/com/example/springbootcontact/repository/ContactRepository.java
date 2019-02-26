@@ -19,5 +19,9 @@ public interface ContactRepository extends JpaRepository<Contact, Integer> {
     @Query(nativeQuery = true, value = "UPDATE contact SET name=?2 WHERE id=?1")
     void update(@Param("id") int id, @Param("name") String name);
 
+    @Modifying
+    @Query(nativeQuery = true, value = "TRUNCATE TABLE contact")
+    void deleteAll();
 
+    public Contact findById(Integer id);
 }
